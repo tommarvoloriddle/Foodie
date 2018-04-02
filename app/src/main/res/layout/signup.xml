@@ -1,116 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroung"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
+    android:background="@drawable/backgroung_compress"
     >
 
   <ScrollView
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:fillViewport="true">
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:fillViewport="true"
+      >
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:orientation="vertical"
+             android:weightSum="1"
+             >
 
-      <RelativeLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:paddingLeft="25dp"
-          android:paddingRight="25dp">
-
-          <ImageView
-              android:id="@+id/imageView"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-
-              android:layout_above="@+id/email_signup"
-              android:layout_alignParentStart="true"
-              android:src="@drawable/logo_circle" />
-
-          <EditText
-              android:id="@+id/email_signup"
-              android:layout_width="match_parent"
-              android:layout_height="45dp"
-
-              android:layout_above="@+id/name"
-              android:layout_alignParentStart="true"
-              android:layout_marginBottom="30dp"
-              android:background="@drawable/rounded_input"
-              android:ems="10"
-              android:hint="abc@gmail.com"
-              android:inputType="textEmailAddress"
-              android:textAlignment="center"
-              android:textColor="#FFFFFF" />
-
-          <EditText
-              android:id="@+id/name"
-              android:layout_width="match_parent"
-              android:layout_height="45dp"
-
-              android:layout_alignParentStart="true"
-              android:layout_centerVertical="true"
-              android:background="@drawable/rounded_input"
-              android:ems="10"
-              android:hint="John Doe"
-              android:inputType="textPersonName"
-              android:textAlignment="center"
-              android:textColor="#FFFFFF" />
+             <ImageView
+                 android:id="@+id/imageView"
+                 android:layout_width="wrap_content"
+                 android:layout_height="0dp"
+                 android:layout_weight="0.3"
+                 android:scaleType="fitCenter"
+                 android:src="@drawable/logo_circle1" />
 
 
-          <EditText
-              android:id="@+id/phone"
-              android:layout_width="match_parent"
-              android:layout_height="45dp"
-
-              android:layout_alignParentStart="true"
-              android:layout_alignTop="@+id/name"
-              android:layout_marginTop="70dp"
-              android:background="@drawable/rounded_input"
-              android:ems="10"
-              android:hint="1234567895"
-              android:inputType="phone"
-              android:textAlignment="center"
-              android:textColor="#FFFFFF" />
-
-          <EditText
-              android:id="@+id/password"
-              android:layout_width="match_parent"
-              android:layout_height="45dp"
-
-              android:layout_alignParentStart="true"
-              android:layout_below="@+id/phone"
-              android:layout_marginTop="26dp"
-              android:background="@drawable/rounded_input"
-              android:ems="10"
-              android:hint="password"
-              android:inputType="textVisiblePassword"
-              android:textAlignment="center"
-              android:textColor="#FFFFFF" />
-
-          <CheckBox
-              android:id="@+id/checkbox"
-              android:layout_width="match_parent"
-              android:layout_height="44dp"
-              android:layout_alignParentStart="true"
-              android:background="@drawable/rounded_input"
-              android:layout_below="@+id/password"
-              android:layout_marginTop="22dp"
-
-              android:textColor="#FFFFFF"
-              android:text="Are you a shop owner?" />
-
-          <Spinner
-              android:id="@+id/spinner"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_alignParentBottom="true"
-              android:layout_centerHorizontal="true"
-
-              />
+             <EditText
+                 android:id="@+id/email"
+                 android:layout_width="wrap_content"
+                 android:layout_height="0dp"
+                 android:ems="10"
+                 android:layout_margin="20dp"
+                 android:textColor="#FFFFFF"
+                 android:layout_marginTop="10dp"
+                 android:layout_weight="0.12"
+                 android:textAlignment="center"
+                 android:hint="abc@gmail.com"
+                 android:inputType="textEmailAddress"
+                 android:background="@drawable/rounded_input"/>
 
 
+             <EditText
+                 android:id="@+id/password"
+                 android:layout_width="match_parent"
+                 android:layout_height="0dp"
+                 android:ems="10"
+                 android:layout_margin="20dp"
+                 android:textColor="#ffffff"
+                 android:layout_weight="0.12"
+                 android:hint="password"
+                 android:textAlignment="center"
+                 android:inputType="textPassword"
+                 android:background="@drawable/rounded_input"/>
 
-
-      </RelativeLayout>
+             <Button
+                 android:id="@+id/login"
+                 style="@style/AppTheme.RoundedCornerMaterialButton"
+                 android:layout_width="match_parent"
+                 android:layout_height="0dp"
+                 android:layout_margin="20dp"
+                 android:layout_weight="0.12"
+                 android:text="Login"
+                 android:layout_marginBottom="39dp"
+                 />
+         </LinearLayout>
 
   </ScrollView>
+
 
 </LinearLayout>
