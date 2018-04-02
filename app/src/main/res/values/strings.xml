@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">FoodieNITW</string>
+
+    <string name="shop">Choose your shop</string>
+
+    <string-array name="shops">
+        <item>Shop 1</item>
+        <item>Shop 2</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+    </string-array>
 </resources>

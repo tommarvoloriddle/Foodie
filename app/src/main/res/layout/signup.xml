@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="beforeDescendants"
@@ -8,38 +8,46 @@
     android:background="@drawable/backgroung_compress"
     >
 
-  <ScrollView
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent"
-      android:fillViewport="true"
-      >
+
          <LinearLayout
-             android:layout_width="match_parent"
+             android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:orientation="vertical"
-             android:weightSum="1"
              >
 
              <ImageView
                  android:id="@+id/imageView"
                  android:layout_width="wrap_content"
-                 android:layout_height="0dp"
-                 android:layout_weight="0.3"
+                 android:layout_height="175dp"
                  android:scaleType="fitCenter"
                  android:src="@drawable/logo_circle1" />
 
 
+
              <EditText
-                 android:id="@+id/email"
-                 android:layout_width="wrap_content"
-                 android:layout_height="0dp"
+                 android:id="@+id/name"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
                  android:ems="10"
                  android:layout_margin="20dp"
-                 android:textColor="#FFFFFF"
-                 android:layout_marginTop="10dp"
-                 android:layout_weight="0.12"
+                 android:padding="15dp"
+                 android:textColor="#ffffff"
+                 android:textColorHint="#ffffff"
+                 android:hint="Name"
                  android:textAlignment="center"
-                 android:hint="abc@gmail.com"
+                 android:inputType="textPersonName"
+                 android:background="@drawable/rounded_input"/>
+
+             <EditText
+                 android:id="@+id/email"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="20dp"
+                 android:padding="15dp"
+                 android:textColor="#FFFFFF"
+                 android:textAlignment="center"
+                 android:hint="Email"
+                 android:textColorHint="#DDDDDD"
                  android:inputType="textEmailAddress"
                  android:background="@drawable/rounded_input"/>
 
@@ -47,29 +55,72 @@
              <EditText
                  android:id="@+id/password"
                  android:layout_width="match_parent"
-                 android:layout_height="0dp"
+                 android:layout_height="wrap_content"
                  android:ems="10"
                  android:layout_margin="20dp"
+                 android:padding="15dp"
                  android:textColor="#ffffff"
-                 android:layout_weight="0.12"
                  android:hint="password"
+                 android:textColorHint="#ffffff"
                  android:textAlignment="center"
                  android:inputType="textPassword"
                  android:background="@drawable/rounded_input"/>
+
+             <EditText
+                 android:id="@+id/phone"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:ems="10"
+                 android:layout_margin="20dp"
+                 android:padding="15dp"
+                 android:textColor="#ffffff"
+                 android:hint="Phone No"
+                 android:textColorHint="#ffffff"
+                 android:textAlignment="center"
+                 android:inputType="number"
+                 android:background="@drawable/rounded_input"/>
+
+
+             <CheckBox
+                 android:id="@+id/isOwner"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="75dp"
+                 android:buttonTint="#FFFFFF"
+                 android:padding="20dp"
+                 android:text="Are you an owner?"
+                 android:textColor="#DDDDDD" />
+
+             <Spinner
+                 android:id="@+id/spinner"
+                 android:layout_width="match_parent"
+                 android:layout_height="50dp"
+
+                 android:layout_margin="20dp"
+
+                 android:backgroundTint="#FFFFFF"
+                 android:entries="@array/shops"
+                 android:prompt="@string/shop"
+                 android:visibility="gone"
+                 android:textAlignment="center"
+                 android:textColor="#ef5a20">
+
+
+             </Spinner>
+
 
              <Button
                  android:id="@+id/login"
                  style="@style/AppTheme.RoundedCornerMaterialButton"
                  android:layout_width="match_parent"
-                 android:layout_height="0dp"
+                 android:layout_height="wrap_content"
                  android:layout_margin="20dp"
-                 android:layout_weight="0.12"
-                 android:text="Login"
-                 android:layout_marginBottom="39dp"
+
+                 android:text="Signup"
                  />
          </LinearLayout>
 
-  </ScrollView>
 
 
-</LinearLayout>
+
+</ScrollView>
