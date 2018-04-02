@@ -8,7 +8,6 @@
     android:background="@drawable/backgroung_compress"
     >
 
-
          <LinearLayout
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
@@ -22,35 +21,32 @@
                  android:scaleType="fitCenter"
                  android:src="@drawable/logo_circle1" />
 
-
-
              <EditText
-                 android:id="@+id/name"
+                 android:id="@+id/etnewname"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
+                 android:layout_margin="20dp"
+                 android:background="@drawable/rounded_input"
                  android:ems="10"
-                 android:layout_margin="20dp"
-                 android:padding="15dp"
-                 android:textColor="#ffffff"
-                 android:textColorHint="#ffffff"
                  android:hint="Name"
-                 android:textAlignment="center"
                  android:inputType="textPersonName"
-                 android:background="@drawable/rounded_input"/>
+                 android:padding="15dp"
+                 android:textAlignment="center"
+                 android:textColor="#ffffff"
+                 android:textColorHint="#ffffff" />
 
              <EditText
-                 android:id="@+id/email"
+                 android:id="@+id/etnewemail"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_margin="20dp"
-                 android:padding="15dp"
-                 android:textColor="#FFFFFF"
-                 android:textAlignment="center"
+                 android:background="@drawable/rounded_input"
                  android:hint="Email"
-                 android:textColorHint="#DDDDDD"
                  android:inputType="textEmailAddress"
-                 android:background="@drawable/rounded_input"/>
-
+                 android:padding="15dp"
+                 android:textAlignment="center"
+                 android:textColor="#FFFFFF"
+                 android:textColorHint="#DDDDDD" />
 
              <EditText
                  android:id="@+id/password"
@@ -60,7 +56,7 @@
                  android:layout_margin="20dp"
                  android:padding="15dp"
                  android:textColor="#ffffff"
-                 android:hint="password"
+                 android:hint="Password"
                  android:textColorHint="#ffffff"
                  android:textAlignment="center"
                  android:inputType="textPassword"
@@ -80,14 +76,12 @@
                  android:inputType="number"
                  android:background="@drawable/rounded_input"/>
 
-
              <CheckBox
                  android:id="@+id/isOwner"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:layout_marginLeft="75dp"
+                 android:layout_marginLeft="140dp"
                  android:buttonTint="#FFFFFF"
-                 android:padding="20dp"
                  android:text="Are you an owner?"
                  android:textColor="#DDDDDD" />
 
@@ -95,19 +89,14 @@
                  android:id="@+id/spinner"
                  android:layout_width="match_parent"
                  android:layout_height="50dp"
-
                  android:layout_margin="20dp"
-
                  android:backgroundTint="#FFFFFF"
                  android:entries="@array/shops"
                  android:prompt="@string/shop"
                  android:visibility="gone"
                  android:textAlignment="center"
                  android:textColor="#ef5a20">
-
-
              </Spinner>
-
 
              <Button
                  android:id="@+id/login"
@@ -119,8 +108,5 @@
                  android:text="Signup"
                  />
          </LinearLayout>
-
-
-
 
 </ScrollView>

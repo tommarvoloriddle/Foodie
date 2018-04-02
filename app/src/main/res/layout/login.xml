@@ -12,82 +12,82 @@
         android:layout_height="0dp"
         android:layout_weight="0.4"
         android:scaleType="fitCenter"
+        android:paddingTop="20dp"
         android:src="@drawable/logo_circle1" />
 
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/etemail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:ems="10"
         android:layout_margin="20dp"
-        android:textColor="#FFFFFF"
         android:layout_marginTop="10dp"
         android:layout_weight="0.12"
-        android:textAlignment="center"
-        android:hint="abc@gmail.com"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
-        android:background="@drawable/rounded_input"/>
+        android:textAlignment="center"
+
+        android:textColor="#FFFFFF" />
 
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/etpassword"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:ems="10"
         android:layout_margin="20dp"
-        android:textColor="#ffffff"
         android:layout_weight="0.12"
-        android:hint="password"
-        android:textAlignment="center"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:background="@drawable/rounded_input"/>
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/btnlogin"
         style="@style/AppTheme.RoundedCornerMaterialButton"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="20dp"
-        android:layout_weight="0.12"
-        android:text="Login"
         android:layout_marginBottom="39dp"
-        />
+        android:layout_weight="0.12"
+        android:text="Login" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.24"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.24"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:layout_margin="10dp"
-                android:textSize="15sp"
-                android:id="@+id/Register"
-                android:textAlignment="center"
-                android:clickable="true"
+        <TextView
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:clickable="true"
+            android:text="New Registration"
+            android:textAlignment="center"
 
-                android:textColor="#000000"
-                android:text="Register"
-                />
+            android:textColor="#DDDDDD"
+            android:textSize="15sp" />
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:layout_weight="0.5"
-                android:textSize="15sp"
-                android:id="@+id/Forgot_Password"
-                android:textAlignment="center"
-                android:clickable="true"
+        <TextView
+            android:id="@+id/btnforgot"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:clickable="true"
+            android:text="Forgot Password"
 
-                android:textColor="#000000"
-                android:text="Forgot Password"/>
+            android:textAlignment="center"
 
-        </LinearLayout>
+            android:textColor="#DDDDDD"
+            android:textSize="15sp" />
+
+    </LinearLayout>
 </LinearLayout>
