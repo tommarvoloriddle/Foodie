@@ -49,32 +49,32 @@
                  android:textColorHint="#DDDDDD" />
 
              <EditText
-                 android:id="@+id/password"
+                 android:id="@+id/etnewpassword"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:ems="10"
                  android:layout_margin="20dp"
-                 android:padding="15dp"
-                 android:textColor="#ffffff"
+                 android:background="@drawable/rounded_input"
+                 android:ems="10"
                  android:hint="Password"
-                 android:textColorHint="#ffffff"
-                 android:textAlignment="center"
                  android:inputType="textPassword"
-                 android:background="@drawable/rounded_input"/>
+                 android:padding="15dp"
+                 android:textAlignment="center"
+                 android:textColor="#ffffff"
+                 android:textColorHint="#ffffff" />
 
              <EditText
-                 android:id="@+id/phone"
+                 android:id="@+id/etnewphone"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
-                 android:ems="10"
                  android:layout_margin="20dp"
-                 android:padding="15dp"
-                 android:textColor="#ffffff"
+                 android:background="@drawable/rounded_input"
+                 android:ems="10"
                  android:hint="Phone No"
-                 android:textColorHint="#ffffff"
-                 android:textAlignment="center"
                  android:inputType="number"
-                 android:background="@drawable/rounded_input"/>
+                 android:padding="15dp"
+                 android:textAlignment="center"
+                 android:textColor="#ffffff"
+                 android:textColorHint="#ffffff" />
 
              <CheckBox
                  android:id="@+id/isOwner"
@@ -86,27 +86,25 @@
                  android:textColor="#DDDDDD" />
 
              <Spinner
-                 android:id="@+id/spinner"
+                 android:id="@+id/etspinner"
                  android:layout_width="match_parent"
                  android:layout_height="50dp"
                  android:layout_margin="20dp"
                  android:backgroundTint="#FFFFFF"
                  android:entries="@array/shops"
                  android:prompt="@string/shop"
-                 android:visibility="gone"
                  android:textAlignment="center"
-                 android:textColor="#ef5a20">
-             </Spinner>
+                 android:textColor="#ef5a20"
+                 android:visibility="gone"></Spinner>
 
              <Button
-                 android:id="@+id/login"
+                 android:id="@+id/btnsignup"
                  style="@style/AppTheme.RoundedCornerMaterialButton"
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_margin="20dp"
 
-                 android:text="Signup"
-                 />
+                 android:text="Signup" />
          </LinearLayout>
 
 </ScrollView>
