@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -13,7 +13,7 @@
         <item name="android:background">@drawable/rounded_shape</item>
     </style>
 
-    <style name="generalnotitle" parent="Theme.AppCompat.Light" >
+    <style name="generalnotitle" parent="Theme.AppCompat.Light.NoActionBar" >
         <item name="android:windowNoTitle">true</item>   <!-- //this -->
     </style>
 </resources>

@@ -74,9 +74,11 @@ public class signup extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
+                                Toast.makeText(signup.this, "Registration Success", Toast.LENGTH_SHORT).show();
                                 sendEmailVerification();
                                 progressDialog.dismiss();
                             }else {
+                                progressDialog.dismiss();
                                 Toast.makeText(signup.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -114,7 +116,7 @@ public class signup extends AppCompatActivity {
                         sendUserData();
                         //Toast.makeText(signup.this, "Successfully Registered -- Verification mail sent", Toast.LENGTH_SHORT).show();
                         firebaseAuth.signOut();
-                        startActivity(new Intent(signup.this,Login.class));
+                        startActivity(new Intent(signup.this,main_screen.class));
                     }else{
                         Toast.makeText(signup.this, "Verification mail not sent / Error", Toast.LENGTH_SHORT).show();
                     }
