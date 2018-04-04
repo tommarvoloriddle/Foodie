@@ -1,6 +1,7 @@
 package com.app.foodienitw;
 
 public class ShopDetails {
+
     public String name,location,phoneNo;
     public boolean isOpen,isXerox;
 

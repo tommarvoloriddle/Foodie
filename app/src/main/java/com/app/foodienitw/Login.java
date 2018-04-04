@@ -48,6 +48,8 @@ public class Login extends AppCompatActivity {
 
         registration.setOnClickListener(v -> startActivity(new Intent(Login.this, signup.class)));
 
+        forgot.setOnClickListener(v -> startActivity(new Intent(Login.this, ForgotPassword.class)));
+
         login.setOnClickListener(view -> validate(email.getText().toString().trim(), password.getText().toString().trim()));
 
     }

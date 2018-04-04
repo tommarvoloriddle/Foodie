@@ -16,9 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup" android:theme="@style/generalnotitle"/>
-        <activity android:name=".main_screen" android:theme="@style/generalnotitle"/>
-
+        <activity
+            android:name=".signup"
+            android:theme="@style/generalnotitle" />
+        <activity
+            android:name=".main_screen"
+            android:theme="@style/generalnotitle" />
+        <activity android:name=".ForgotPassword"></activity>
     </application>
 
 </manifest>

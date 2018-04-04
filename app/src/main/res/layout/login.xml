@@ -15,7 +15,6 @@
         android:paddingTop="20dp"
         android:src="@drawable/logo_circle1" />
 
-
     <EditText
         android:id="@+id/etemail"
         android:layout_width="match_parent"
@@ -30,7 +29,6 @@
         android:textAlignment="center"
         android:textColorHint="#ffffff"
         android:textColor="#FFFFFF" />
-
 
     <EditText
         android:id="@+id/etpassword"
@@ -86,7 +84,6 @@
             android:text="Forgot Password"
             android:paddingRight="55dp"
             android:textAlignment="center"
-
             android:textColor="#DDDDDD"
             android:textSize="15sp" />
 
