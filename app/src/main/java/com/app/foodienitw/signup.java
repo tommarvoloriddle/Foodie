@@ -73,6 +73,7 @@ public class signup extends AppCompatActivity {
                     shoptype = spinner.getSelectedItem().toString();
                 }else{
                     owneroruser = "User";
+
                 }
 
                 firebaseAuth.createUserWithEmailAndPassword(user_name, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -111,14 +112,17 @@ public class signup extends AppCompatActivity {
     private void sendEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser!=null){
+
             firebaseUser.sendEmailVerification().addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     sendUserData();
                     Toast.makeText(signup.this, "Successfully Registered -- Verification mail sent", Toast.LENGTH_SHORT).show();
                     firebaseAuth.signOut();
+                   finish();
                     startActivity(new Intent(signup.this,Login.class));
                 }else{
                     Toast.makeText(signup.this, "Verification mail not sent / Error", Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
