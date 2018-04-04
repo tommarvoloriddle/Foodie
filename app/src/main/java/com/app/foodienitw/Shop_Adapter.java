@@ -13,7 +13,6 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
 
     public List<ShopDetails> shops;
 
-
     public Shop_Adapter(List<ShopDetails> shops) {
         this.shops = shops;
     }
@@ -23,7 +22,6 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
     public ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_recycler, parent, false);
-
         return new ShopViewHolder(itemView);
     }
 
@@ -33,7 +31,6 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
         holder.name.setText(shop.name);
         holder.location.setText(shop.location);
         holder.phoneNo.setText(shop.phoneNo);
-
     }
 
     @Override

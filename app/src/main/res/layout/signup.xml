@@ -94,8 +94,9 @@
                  android:entries="@array/shops"
                  android:prompt="@string/shop"
                  android:textAlignment="center"
-                 android:textColor="#ef5a20"
-                 android:visibility="gone"></Spinner>
+                 android:textColor="#FFFFFF"
+                 android:background="#ffa500"
+                 ></Spinner>
 
              <Button
                  android:id="@+id/btnsignup"
@@ -103,7 +104,6 @@
                  android:layout_width="match_parent"
                  android:layout_height="wrap_content"
                  android:layout_margin="20dp"
-
                  android:text="Signup" />
          </LinearLayout>
 

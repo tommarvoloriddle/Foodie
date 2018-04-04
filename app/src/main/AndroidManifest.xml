@@ -22,7 +22,7 @@
         <activity
             android:name=".main_screen"
             android:theme="@style/generalnotitle" />
-        <activity android:name=".Owner_MainPage"></activity>
+        <activity android:name=".ForgotPassword"></activity>
     </application>
 
 </manifest>

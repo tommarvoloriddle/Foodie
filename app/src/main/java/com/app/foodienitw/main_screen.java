@@ -21,25 +21,15 @@ public class main_screen extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Shop_Adapter mAdapter;
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
 
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-
-
-
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.rv);
+        recyclerView = findViewById(R.id.rv);
 
         mAdapter = new Shop_Adapter(shopsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -48,13 +38,9 @@ public class main_screen extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         pumpData();
-
-
     }
 
-
     private void pumpData() {
-
         ShopDetails shop =new ShopDetails();
         shopsList.add(shop);
         shopsList.add(shop);
@@ -66,8 +52,6 @@ public class main_screen extends AppCompatActivity {
         shopsList.add(shop);
         shopsList.add(shop);
         shopsList.add(shop);
-
-
 
         mAdapter.notifyDataSetChanged();
     }
