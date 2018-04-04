@@ -68,7 +68,6 @@ public class Login extends AppCompatActivity {
                 } else {
                     Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
-
                 }
             });
         }
@@ -85,5 +84,4 @@ public class Login extends AppCompatActivity {
             firebaseAuth.signOut();
         }
     }
-
 }
