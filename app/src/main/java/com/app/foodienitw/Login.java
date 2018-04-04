@@ -40,25 +40,17 @@ public class Login extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        //FirebaseUser user = firebaseAuth.getCurrentUser();
-        //if(user != null) {
-        //    finish();
-        //    startActivity(new Intent(Login.this, main_screen.class));
-        //}
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user != null) {
+            finish();
+            startActivity(new Intent(Login.this, main_screen.class));
+        }
 
-        registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Login.this, signup.class));
-            }
-        });
+        registration.setOnClickListener(v -> startActivity(new Intent(Login.this, signup.class)));
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validate(email.getText().toString().trim(), password.getText().toString().trim());
-            }
-        });
+        forgot.setOnClickListener(v -> startActivity(new Intent(Login.this, ForgotPassword.class)));
+
+        login.setOnClickListener(view -> validate(email.getText().toString().trim(), password.getText().toString().trim()));
 
     }
 
@@ -69,17 +61,14 @@ public class Login extends AppCompatActivity {
         }else {
             progressDialog.setMessage("Loging In...");
             progressDialog.show();
-            firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        progressDialog.dismiss();
-                        checkEmailVerification();
-                    } else {
-                        Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
+            firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    progressDialog.dismiss();
+                    checkEmailVerification();
+                } else {
+                    Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
 
-                    }
                 }
             });
         }
