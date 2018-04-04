@@ -26,6 +26,7 @@ public class main_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
 
+
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
@@ -38,9 +39,13 @@ public class main_screen extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         pumpData();
+
     }
 
+
+
     private void pumpData() {
+
         ShopDetails shop =new ShopDetails();
         shopsList.add(shop);
         shopsList.add(shop);

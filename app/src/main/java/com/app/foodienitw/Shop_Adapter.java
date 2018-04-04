@@ -31,6 +31,7 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
         holder.name.setText(shop.name);
         holder.location.setText(shop.location);
         holder.phoneNo.setText(shop.phoneNo);
+
     }
 
     @Override

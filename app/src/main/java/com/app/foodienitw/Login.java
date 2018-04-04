@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
         Boolean emailFlag = firebaseUser.isEmailVerified();
         if(emailFlag){
             finish();
-            startActivity(new Intent(Login.this, main_screen.class));
+            startActivity(new Intent(Login.this, Owner_MainPage.class));
         }else{
             Toast.makeText(this, "Verify your email", Toast.LENGTH_SHORT).show();
             firebaseAuth.signOut();
