@@ -28,7 +28,7 @@
         android:hint="Email"
         android:inputType="textEmailAddress"
         android:textAlignment="center"
-
+        android:textColorHint="#ffffff"
         android:textColor="#FFFFFF" />
 
 
@@ -43,6 +43,7 @@
         android:hint="Password"
         android:inputType="textPassword"
         android:textAlignment="center"
+        android:textColorHint="#ffffff"
         android:textColor="#FFFFFF" />
 
     <Button
@@ -71,7 +72,7 @@
             android:clickable="true"
             android:text="New Registration"
             android:textAlignment="center"
-
+            android:paddingLeft="55dp"
             android:textColor="#DDDDDD"
             android:textSize="15sp" />
 
@@ -83,7 +84,7 @@
             android:layout_weight="0.5"
             android:clickable="true"
             android:text="Forgot Password"
-
+            android:paddingRight="55dp"
             android:textAlignment="center"
 
             android:textColor="#DDDDDD"
