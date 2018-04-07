@@ -77,6 +77,7 @@ public class main_screen extends AppCompatActivity {
                        Date currentTime = Calendar.getInstance().getTime();
                        String abcde = currentTime.toString();
 
+                       //Log.e("Time:  ", currentTime.toString());
                        Integer ot,ct;
 
                        String oo = shop.openTime;
@@ -91,6 +92,11 @@ public class main_screen extends AppCompatActivity {
 
                        Character ab = oo.charAt(2);
                        Character cd = co.charAt(2);
+                       Log.e("ab ",ab.toString());
+                       Log.e("cd ",cd.toString());
+                       Log.e("oo ",oo);
+                       Log.e("co ",co);
+
 
                        if(ab.toString().equals("P")){
                            //ot = 12 + Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
@@ -127,19 +133,39 @@ public class main_screen extends AppCompatActivity {
                            }
                        }
 
-                       if(ot<ct) {
-                           if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
-                               shop.setOpenorclose("Open");
-                           } else {
-                               shop.setOpenorclose("Close");
+                       if(ot < ct) {
+                           if(Character.getNumericValue(abcde.charAt(11)) == 0){
+                               if(Character.getNumericValue(abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(12)) <= ct) {
+                                   shop.setOpenorclose("Open");
+                               }else{
+                                   shop.setOpenorclose("Close");
+                               }
+                           }else {
+                               if(Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
+                                   shop.setOpenorclose("Open");
+                               }else {
+                                   shop.setOpenorclose("Close");
+                               }
                            }
-                       }else{
-                           if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
-                               shop.setOpenorclose("Close");
-                           } else {
-                               shop.setOpenorclose("Open");
+                       }else {
+                           if(Character.getNumericValue(abcde.charAt(11)) == 0){
+                               if(Character.getNumericValue(abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(12)) <= ct) {
+                                   shop.setOpenorclose("Close");
+                               }else{
+                                   shop.setOpenorclose("Open");
+                               }
+                           }else {
+                               if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
+                                   shop.setOpenorclose("Close");
+                               } else {
+                                   shop.setOpenorclose("Open");
+                               }
                            }
                        }
+
+                       Log.e("ot ",ot.toString());
+                       Log.e("ct ",ct.toString());
+                       Log.e("systemtime ",(abcde));
 
                        shopsList.add(shop);
                        mAdapter.notifyDataSetChanged();
