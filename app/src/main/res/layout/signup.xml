@@ -90,13 +90,14 @@
                  android:layout_width="match_parent"
                  android:layout_height="50dp"
                  android:layout_margin="20dp"
+                 android:background="#ffa500"
                  android:backgroundTint="#FFFFFF"
                  android:entries="@array/shops"
                  android:prompt="@string/shop"
                  android:textAlignment="center"
-                 android:textColor="#FFFFFF"
-                 android:background="#ffa500"
-                 ></Spinner>
+                 android:textColor="#FFFFFF">
+
+             </Spinner>
 
              <Button
                  android:id="@+id/btnsignup"

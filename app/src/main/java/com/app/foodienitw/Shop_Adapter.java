@@ -30,8 +30,8 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
         ShopDetails shop =shops.get(position);
         holder.name.setText(shop.name);
         holder.location.setText(shop.location);
-        holder.phoneNo.setText(shop.phoneNo);
-
+        holder.phoneNo.setText(shop.phoneno);
+        holder.openorclose.setText(shop.openorclose);
     }
 
     @Override
@@ -40,13 +40,14 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
     }
 
     public class ShopViewHolder extends RecyclerView.ViewHolder {
-        public TextView name, location, phoneNo;
+        public TextView name, location, phoneNo, openorclose;
 
         public ShopViewHolder(View view) {
             super(view);
-            name=view.findViewById(R.id.shop_name);
+            name = view.findViewById(R.id.shop_name);
             location = view.findViewById(R.id.shop_location);
             phoneNo = view.findViewById(R.id.shop_phoneNo);
+            openorclose = view.findViewById(R.id.show_isOpen);
         }
     }
 }

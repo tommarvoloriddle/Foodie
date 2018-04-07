@@ -73,15 +73,14 @@ public class signup extends AppCompatActivity {
                     shoptype = spinner.getSelectedItem().toString();
                 }else{
                     owneroruser = "User";
-
                 }
 
                 firebaseAuth.createUserWithEmailAndPassword(user_name, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            sendEmailVerification();
                             progressDialog.dismiss();
+                            sendEmailVerification();
                         }else {
                             Toast.makeText(signup.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
@@ -118,7 +117,7 @@ public class signup extends AppCompatActivity {
                     sendUserData();
                     Toast.makeText(signup.this, "Successfully Registered -- Verification mail sent", Toast.LENGTH_SHORT).show();
                     firebaseAuth.signOut();
-                   finish();
+                    finish();
                     startActivity(new Intent(signup.this,Login.class));
                 }else{
                     Toast.makeText(signup.this, "Verification mail not sent / Error", Toast.LENGTH_SHORT).show();
@@ -129,12 +128,10 @@ public class signup extends AppCompatActivity {
     }
 
     private void sendUserData(){
+        Toast.makeText(signup.this, "Saving Database", Toast.LENGTH_SHORT).show();
         DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
         UserProfile userProfile = new UserProfile(name1,email1,password1,phoneno1,owneroruser,shoptype);
         databaseReference.setValue(userProfile);
-
     }
-
-
 
 }
