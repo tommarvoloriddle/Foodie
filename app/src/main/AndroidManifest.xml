@@ -23,10 +23,9 @@
             android:name=".main_screen"
             android:theme="@style/generalnotitle" />
 
-        <activity android:name=".ForgotPassword"></activity>
-         <activity android:name=".Owner_MainPage"></activity>
-
-     
+        <activity android:name=".Owner_MainPage" />
+        <activity android:name=".OrderPage" />
+        <activity android:name=".PaymentTest"></activity>
 
     </application>
 
