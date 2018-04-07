@@ -52,6 +52,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.MenuViewHold
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         FoodItem item =  menuList.get(position);
+
         //holder.name.setText(item.getName());
         //holder.rate.setText(item.getRate());
 
@@ -61,6 +62,7 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.MenuViewHold
 
         holder.name.setText(a);
         holder.rate.setText(b);
+
     }
 
     @Override

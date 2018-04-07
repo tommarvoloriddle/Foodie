@@ -8,6 +8,7 @@ public class ShopDetails {
     public  ShopDetails(){
     }
 
+
     public ShopDetails(String name, String location, String openTime, String closeTime) {
         this.name = name;
         this.location = location;
@@ -54,4 +55,5 @@ public class ShopDetails {
     public void setOpenTime(String openTime) {
         this.openTime = openTime;
     }
+
 }

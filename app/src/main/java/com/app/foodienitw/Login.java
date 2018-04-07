@@ -49,6 +49,12 @@ public class Login extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user != null) {
+            finish();
+            startActivity(new Intent(Login.this, main_screen.class));
+        }
+
         registration.setOnClickListener(v -> startActivity(new Intent(Login.this, signup.class)));
 
         forgot.setOnClickListener(v -> startActivity(new Intent(Login.this, ForgotPassword.class)));
@@ -77,6 +83,8 @@ public class Login extends AppCompatActivity {
     }
 
     private void checkEmailVerification() {
+
+
         FirebaseUser firebaseUser = firebaseAuth.getInstance().getCurrentUser();
         Boolean emailFlag = firebaseUser.isEmailVerified();
 
@@ -108,3 +116,6 @@ public class Login extends AppCompatActivity {
         });
     }
 }
+
+
+
