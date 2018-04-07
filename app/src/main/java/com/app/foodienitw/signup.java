@@ -33,14 +33,14 @@ public class signup extends AppCompatActivity {
     private EditText password2;
     private EditText phoneno2;
     private Button signup2;
-    private CheckBox owner2;
+    private CheckBox chechbox;
     private Spinner spinner;
 
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
-    String name1, email1, password1, phoneno1;
+    String name1, email1, password1, phoneno1, owneroruser, shoptype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class signup extends AppCompatActivity {
         password2 = findViewById(R.id.etnewpassword);
         phoneno2 = findViewById(R.id.etnewphone);
         signup2 = findViewById(R.id.btnsignup);
-        owner2 = findViewById(R.id.isOwner);
+        chechbox= findViewById(R.id.isOwner);
         spinner = findViewById(R.id.etspinner);
 
         progressDialog = new ProgressDialog(this);
@@ -60,33 +60,35 @@ public class signup extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        signup2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(validate()){
-                    String user_name = email2.getText().toString().trim();
-                    String user_password = password2.getText().toString().trim();
+        signup2.setOnClickListener(view -> {
+            if(validate()){
+                String user_name = email2.getText().toString().trim();
+                String user_password = password2.getText().toString().trim();
 
-                    progressDialog.setMessage("Signing Up...");
-                    progressDialog.show();
+                progressDialog.setMessage("Signing Up...");
+                progressDialog.show();
 
-                    firebaseAuth.createUserWithEmailAndPassword(user_name, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()) {
-                                Toast.makeText(signup.this, "Registration Success", Toast.LENGTH_SHORT).show();
-                                sendEmailVerification();
-                                progressDialog.dismiss();
-                            }else {
-                                progressDialog.dismiss();
-                                Toast.makeText(signup.this, "Registration Failed", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                if(chechbox.isChecked()){
+                    owneroruser = "Owner";
+                    shoptype = spinner.getSelectedItem().toString();
+                }else{
+                    owneroruser = "User";
                 }
+
+                firebaseAuth.createUserWithEmailAndPassword(user_name, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()) {
+                            progressDialog.dismiss();
+                            sendEmailVerification();
+                        }else {
+                            Toast.makeText(signup.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                        }
+                    }
+                });
             }
         });
-
     }
 
     private boolean validate(){
@@ -109,28 +111,27 @@ public class signup extends AppCompatActivity {
     private void sendEmailVerification(){
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         if(firebaseUser!=null){
-            firebaseUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        sendUserData();
-                        //Toast.makeText(signup.this, "Successfully Registered -- Verification mail sent", Toast.LENGTH_SHORT).show();
-                        firebaseAuth.signOut();
-                        finish();
-                        startActivity(new Intent(signup.this,main_screen.class));
-                    }else{
-                        Toast.makeText(signup.this, "Verification mail not sent / Error", Toast.LENGTH_SHORT).show();
-                    }
+
+            firebaseUser.sendEmailVerification().addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    sendUserData();
+                    Toast.makeText(signup.this, "Successfully Registered -- Verification mail sent", Toast.LENGTH_SHORT).show();
+                    firebaseAuth.signOut();
+                    finish();
+                    startActivity(new Intent(signup.this,Login.class));
+                }else{
+                    Toast.makeText(signup.this, "Verification mail not sent / Error", Toast.LENGTH_SHORT).show();
+
                 }
             });
         }
     }
 
     private void sendUserData(){
+        Toast.makeText(signup.this, "Saving Database", Toast.LENGTH_SHORT).show();
         DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
-        UserProfile userProfile = new UserProfile(name1,email1,password1,phoneno1);
+        UserProfile userProfile = new UserProfile(name1,email1,password1,phoneno1,owneroruser,shoptype);
         databaseReference.setValue(userProfile);
-
     }
 
 }

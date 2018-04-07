@@ -6,18 +6,28 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Owner_MainPage extends AppCompatActivity {
 
-    private List<FoodItem> menuList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private Menu_Adapter mAdapter;
-
-    public ImageView  addItem,removeItem;
+    public ImageView addItem;
+    public Button update1;
+    public TextView item_name, item_price;
+    public EditText shop_Name,shop_Location,open_Time,close_Time;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseDatabase firebaseDatabase;
+    private Spinner spinclose, spinopen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,61 +35,38 @@ public class Owner_MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.owner_main);
 
-
         addItem = findViewById(R.id.addFoodItem);
-        removeItem = findViewById(R.id.removeFoodItem);
+        item_name = findViewById(R.id.food_name);
+        item_price = findViewById(R.id.food_price);
+        shop_Name = findViewById(R.id.shopName);
+        shop_Location = findViewById(R.id.shopLocation);
+        open_Time = findViewById(R.id.openingTime);
+        close_Time = findViewById(R.id.ClosingTime);
+        update1 = findViewById(R.id.updateDetails);
+        spinclose = findViewById(R.id.spinnerClose);
+        spinopen = findViewById(R.id.spinnerOpen);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rv_food);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
 
-        mAdapter = new Menu_Adapter(menuList);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+        addItem.setOnClickListener(v -> addFoodItem());
 
-        pumpData();
-
-
-
-        addItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addFoodItem();
-            }
+        update1.setOnClickListener(v -> {
+            String close = spinclose.getSelectedItem().toString();
+            String open = spinopen.getSelectedItem().toString();
+            DatabaseReference a = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
+            DatabaseReference shopdetailsref = a.child("Shop Details");
+            ShopDetails shopDetails = new ShopDetails(shop_Name.getText().toString().trim(),shop_Location.getText().toString().trim(),
+                    open_Time.getText().toString().trim() + open,
+                    close_Time.getText().toString().trim() + close);
+            shopdetailsref.setValue(shopDetails);
         });
-
-        removeItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removeFoodItem();
-            }
-        });
-
-
-    }
-
-    private void removeFoodItem() {
-
-        //add a check function
-        menuList.remove(menuList.size()-1);
-        mAdapter.notifyDataSetChanged();
     }
 
     private void addFoodItem() {
-
-        FoodItem foodItem = new FoodItem();
-        menuList.add(foodItem);
-        mAdapter.notifyDataSetChanged();
-
-
-    }
-
-
-    private void pumpData() {
-
-        //testData
-
-        FoodItem foodItem = new FoodItem();
-        menuList.add(foodItem);
+        DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
+        DatabaseReference menuref = databaseReference.child("Menu Items");
+        FoodItem foodItem = new FoodItem(item_name.getText().toString().trim(),item_price.getText().toString().trim());
+        menuref.push().setValue(foodItem);
     }
 }

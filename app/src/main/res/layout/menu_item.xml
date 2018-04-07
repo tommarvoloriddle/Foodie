@@ -18,15 +18,18 @@
 
         <EditText
             android:layout_width="0dp"
+
             android:layout_weight="0.6"
             android:inputType="textPersonName"
             android:hint="ChickenBiryani"
             android:textColor="#000000"
             android:id="@+id/food_name"
+
             android:layout_height="wrap_content" />
 
         <EditText
             android:layout_width="0dp"
+
             android:layout_weight="0.25"
             android:inputType="number"
             android:id="@+id/food_price"
@@ -39,6 +42,7 @@
             android:layout_weight="0.15"
             android:src="@drawable/rupee"
             android:layout_margin="10dp"
+
             android:layout_height="wrap_content" />
     </LinearLayout>
 

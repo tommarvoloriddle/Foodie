@@ -10,4 +10,11 @@
         <item>France</item>
         <item>Italy</item>
     </string-array>
+
+    <string-array name="time">
+        <item>AM</item>
+        <item>PM</item>
+
+    </string-array>
+
 </resources>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -36,11 +39,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:textAlignment="center"
-                android:textSize="20sp"
-                android:textColor="@color/colorAccent"
-                android:text="Menu"
                 android:layout_centerInParent="true"
+                android:text="Enter items to be updated"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
 
                 />
         </RelativeLayout>
@@ -52,7 +55,7 @@
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_margin="10dp"
-            android:layout_height="300dp"
+            android:layout_height="50dp"
             card_view:cardCornerRadius="4dp">
 
 
@@ -61,33 +64,81 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_food"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
 
-                </android.support.v7.widget.RecyclerView>
+                    <EditText
+                        android:id="@+id/food_name"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.6"
+                        android:hint="ChickenBiryani"
+                        android:inputType="textPersonName"
+
+                        android:textColor="#000000" />
+
+                    <EditText
+                        android:id="@+id/food_price"
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:hint="100"
+                        android:inputType="number"
+                        android:textColor="#000000" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_weight="0.15"
+
+                        android:src="@drawable/rupee" />
+                </LinearLayout>
 
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="20dp"
                     android:id="@+id/addFoodItem"
-                    android:src="@drawable/plus" />
-
-
-                <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+
+                        android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:id="@+id/removeFoodItem"
-                    android:layout_alignTop="@+id/addFoodItem"
-                    android:layout_marginEnd="60dp"
-                    android:src="@drawable/minus" />
+                    android:src="@drawable/plus" />
+                <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/rv_food"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--</android.support.v7.widget.RecyclerView>-->
+
+
+                <!--<ImageView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:layout_marginEnd="20dp"-->
+                <!--android:id="@+id/addFoodItem"-->
+                <!--android:src="@drawable/plus" />-->
+
+
+                <!--<ImageView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:id="@+id/removeFoodItem"-->
+                <!--android:layout_alignTop="@+id/addFoodItem"-->
+                <!--android:layout_marginEnd="60dp"-->
+                <!--android:src="@drawable/minus" />-->
 
             </RelativeLayout>
 
@@ -95,18 +146,18 @@
 
 
         <EditText
-        android:id="@+id/shopName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@drawable/rounded_input"
-        android:ems="10"
-        android:hint="Shop Name"
-        android:inputType="textPersonName"
-        android:padding="15dp"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textColorHint="#ffffff" />
+            android:id="@+id/shopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@drawable/rounded_input"
+            android:ems="10"
+            android:hint="Shop Name"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
 
         <EditText
             android:id="@+id/shopLocation"
@@ -122,34 +173,87 @@
             android:textColor="#ffffff"
             android:textColorHint="#ffffff" />
 
-        <EditText
-            android:id="@+id/openingTime"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/rounded_input"
-            android:ems="10"
-            android:hint="Opening Time"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff" />
+            android:weightSum="1"
+            android:orientation="horizontal"
+            >
 
-        <EditText
-            android:id="@+id/ClosingTime"
+            <EditText
+                android:id="@+id/openingTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_input"
+                android:ems="10"
+                android:layout_weight="0.7"
+                android:hint="Opening Time"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="0.25"
+                android:background="#ffa500"
+                android:id="@+id/spinnerOpen"
+                android:backgroundTint="#FFFFFF"
+                android:entries="@array/time"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF">
+
+            </Spinner>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@drawable/rounded_input"
-            android:ems="10"
-            android:hint="10 PM"
-            android:inputType="textPersonName"
-            android:padding="15dp"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textColorHint="#ffffff" />
+            android:weightSum="1"
+            android:orientation="horizontal"
+            >
 
+
+            <EditText
+                android:id="@+id/ClosingTime"
+                android:layout_width="0dp"
+                android:layout_weight="0.7"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/rounded_input"
+                android:ems="10"
+                android:hint="Closing Time"
+                android:inputType="textPersonName"
+                android:padding="15dp"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textColorHint="#ffffff" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="0.25"
+                android:id="@+id/spinnerClose"
+                android:background="#ffa500"
+                android:backgroundTint="#FFFFFF"
+                android:entries="@array/time"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF">
+
+            </Spinner>
+
+
+
+        </LinearLayout>
         <Button
             android:id="@+id/updateDetails"
             style="@style/AppTheme.RoundedCornerMaterialButton"
@@ -158,9 +262,11 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="39dp"
 
-            android:text="Update" />
 
+
+            android:text="Update" />
 
 
     </LinearLayout>
 </ScrollView>
+
