@@ -65,8 +65,6 @@ public class main_screen extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot :  dataSnapshot.getChildren()){
                    if(snapshot.child("userType").getValue().toString().equals("Owner")){
-                        //Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
-
                        ShopDetails shop = new ShopDetails();
                        shop.name = snapshot.child("Shop Details").child("name").getValue().toString();
                        shop.location = snapshot.child("Shop Details").child("location").getValue().toString();
@@ -77,7 +75,6 @@ public class main_screen extends AppCompatActivity {
                        Date currentTime = Calendar.getInstance().getTime();
                        String abcde = currentTime.toString();
 
-                       //Log.e("Time:  ", currentTime.toString());
                        Integer ot,ct;
 
                        String oo = shop.openTime;
@@ -92,15 +89,8 @@ public class main_screen extends AppCompatActivity {
 
                        Character ab = oo.charAt(2);
                        Character cd = co.charAt(2);
-                       Log.e("ab ",ab.toString());
-                       Log.e("cd ",cd.toString());
-                       Log.e("oo ",oo);
-                       Log.e("co ",co);
-
 
                        if(ab.toString().equals("P")){
-                           //ot = 12 + Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
-
                            if(Character.getNumericValue(oo.charAt(0)) == 0){
                                ot = 12+ Character.getNumericValue(oo.charAt(1));
                            }else{
@@ -116,9 +106,6 @@ public class main_screen extends AppCompatActivity {
                        }
 
                        if(cd.toString().equals("P")){
-                           Log.e("qwerty","in pm");
-                           //ct = 12 + Character.getNumericValue(co.charAt(0) + co.charAt(1));
-
                            if(Character.getNumericValue(co.charAt(0)) == 0){
                                ct = 12 + Character.getNumericValue(co.charAt(1));
                            }else{
@@ -162,10 +149,6 @@ public class main_screen extends AppCompatActivity {
                                }
                            }
                        }
-
-                       Log.e("ot ",ot.toString());
-                       Log.e("ct ",ct.toString());
-                       Log.e("systemtime ",(abcde));
 
                        shopsList.add(shop);
                        mAdapter.notifyDataSetChanged();
