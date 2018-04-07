@@ -3,6 +3,7 @@ package com.app.foodienitw;
 import android.app.ActionBar;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class main_screen extends AppCompatActivity {
     private List<ShopDetails> shopsList = new ArrayList<>();
     private RecyclerView recyclerView;
     private Shop_Adapter mAdapter;
-
+    private DrawerLayout mDrawerLayout;
 
 
 
@@ -30,9 +32,9 @@ public class main_screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-
-        setSupportActionBar(myToolbar);
+//        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+//
+//        setSupportActionBar(myToolbar);
 
 
 
@@ -48,6 +50,9 @@ public class main_screen extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         pumpData();
+
+
+
 
 
     }

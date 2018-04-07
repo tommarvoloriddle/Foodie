@@ -12,4 +12,5 @@ public class ShopDetails {
         this.phoneNo = "9998887775";
     }
 
+
 }
