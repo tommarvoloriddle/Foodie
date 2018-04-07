@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="-2dp"
+                android:layout_marginEnd="2dp"
                 android:textSize="18sp"
                 android:layout_toStartOf="@+id/order_rupee"
                 android:text="100"
@@ -74,7 +74,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text="0"
                 android:id="@+id/order_quantity"
                 android:textSize="16sp"
                 android:textColor="#000000"

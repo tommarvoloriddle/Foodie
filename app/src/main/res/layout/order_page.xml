@@ -5,6 +5,45 @@
     android:background="#BDBDBD"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000000"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/toolBar_drawer"
+                android:src="@drawable/menu_icon"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shopNameOrder"
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorAccent"
+                android:text="FoodieNITW"
+                android:textSize="18sp"
+                android:textStyle="bold"
+
+
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -30,7 +69,7 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_margin="10dp"
-        android:layout_height="400dp"
+        android:layout_height="300dp"
         card_view:cardCornerRadius="4dp">
 
         <android.support.v7.widget.RecyclerView
@@ -52,5 +91,5 @@
         android:layout_margin="20dp"
         android:layout_marginBottom="39dp"
 
-        android:text="Pay " />
+        android:text="Order Finalize " />
 </LinearLayout>

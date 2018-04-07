@@ -8,4 +8,10 @@ public class Order {
         rate = "100";
         quantity = "10";
     }
+
+    public Order(String nameOrder, String rateOrder) {
+        this.itemName
+                 = nameOrder;
+        this.rate = rateOrder;
+    }
 }
