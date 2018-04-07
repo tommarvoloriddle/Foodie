@@ -8,7 +8,6 @@ public class ShopDetails {
     public  ShopDetails(){
     }
 
-
     public ShopDetails(String name, String location, String openTime, String closeTime) {
         this.name = name;
         this.location = location;

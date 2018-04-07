@@ -18,13 +18,8 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
     public List<Order> orderList;
     public  int[] myList = new int[20];
 
-
-
-
     public Order_adapter(List<Order> order) {
-
         this.orderList = order;
-
     }
 
     @NonNull
@@ -42,8 +37,6 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
         holder.itemName.setText(order.itemName);
         holder.rate.setText(order.rate);
         holder.quantity.setText(String.valueOf(holder.count));
-
-
     }
 
     @Override
@@ -55,7 +48,6 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
         return myList;
     }
 
-
     public class OrderViewHolder extends RecyclerView.ViewHolder {
 
         //public  int[] myList = new int[20];
@@ -64,13 +56,10 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
         public TextView quantity;
         public int count =0;
 
-
-
         public OrderViewHolder(View view) {
             super(view);
 
-
-            Log.d("tes","test00");
+//            Log.d("tes","test00");
             itemName=view.findViewById(R.id.order_name);
             rate=view.findViewById(R.id.order_rate);
             quantity =view.findViewById(R.id.order_quantity);
@@ -86,7 +75,6 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
                     notifyDataSetChanged();
 //                    Log.e("count", String.valueOf(getLayoutPosition()));
 //                    Log.e("size", String.valueOf(orderQuantity.size()));
-//                    quantity.setText(count);
                 }
             });
 
@@ -96,10 +84,8 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
                     count--;
                     if(count<=0){
                         count= 0;
-
                     }
                     notifyDataSetChanged();
-//                    orderQuantity.set(getLayoutPosition() , count);
                     myList[getLayoutPosition()]= count;
                     Log.e("count", String.valueOf(myList.length));
                     Log.e("count", String.valueOf(myList[0]));
@@ -108,9 +94,5 @@ public class Order_adapter extends RecyclerView.Adapter<Order_adapter.OrderViewH
                 }
             });
         }
-
-
     }
-
-
 }

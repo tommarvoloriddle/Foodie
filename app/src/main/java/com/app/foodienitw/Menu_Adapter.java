@@ -18,10 +18,6 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.MenuViewHold
         this.menuList = menuList;
     }
 
-//    public void updateItems(List<FoodItem> menuList){
-//        this.menuList=menuList;
-//    }
-
     public void add(){
         FoodItem foodItem = new FoodItem();
         this.menuList.add(foodItem);
@@ -29,15 +25,12 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.MenuViewHold
         Log.e("size" , String.valueOf(menuList.size()));
         Log.e("pposition" ,menuList.toString());
         notifyItemInserted(menuList.size()-1);
-
     }
 
     public  void  delete(){
         menuList.remove(0);
         Log.e("pposition" ,menuList.toString());
         notifyItemRemoved(0);
-
-
     }
 
     @NonNull
@@ -53,16 +46,11 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.MenuViewHold
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         FoodItem item =  menuList.get(position);
 
-        //holder.name.setText(item.getName());
-        //holder.rate.setText(item.getRate());
-
-//        Log.e("pposition" , String.valueOf(position));
         String a = holder.name.getText().toString().trim();
         String b = holder.rate.getText().toString().trim();
 
         holder.name.setText(a);
         holder.rate.setText(b);
-
     }
 
     @Override
@@ -79,5 +67,4 @@ public class Menu_Adapter extends RecyclerView.Adapter<Menu_Adapter.MenuViewHold
             rate = view.findViewById(R.id.food_price);
         }
     }
-
 }

@@ -23,9 +23,6 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
         this.shops = shops;
     }
 
-
-
-
     @NonNull
     @Override
     public ShopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,8 +30,6 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
                 .inflate(R.layout.card_recycler, parent, false);
         return new ShopViewHolder(itemView);
     }
-
-
 
     @Override
     public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
@@ -67,12 +62,9 @@ public class Shop_Adapter extends RecyclerView.Adapter<Shop_Adapter.ShopViewHold
             Context context=view.getContext();
             ShopDetails shop =shops.get(getLayoutPosition());
             Toast.makeText(view.getContext(), "position = " + shop.getName(), Toast.LENGTH_SHORT).show();
-
-           Intent  intent =  new Intent(context, OrderPage.class);
-           intent.putExtra("name" , shop.getName());
+            Intent  intent =  new Intent(context, OrderPage.class);
+            intent.putExtra("name" , shop.getName());
             context.startActivity(intent);
-
-
         }
     }
 }
