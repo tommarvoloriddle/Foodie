@@ -64,17 +64,14 @@ public class OrderPage extends AppCompatActivity {
         pumpData();
         pay = findViewById(R.id.pay);
         Log.d("test", String.valueOf(myList[1]));
-        pay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myList = mAdapter.getmyList();
-                Log.d("test" , String.valueOf(myList[2]));
-                Intent  intent =  new Intent(OrderPage.this, PaymentTest.class);
-                intent.putExtra("name", ss);
-                intent.putExtra("order" , myList);
-                OrderPage.this.startActivity(intent);
-                }
-        });
+        pay.setOnClickListener(v -> {
+            myList = mAdapter.getmyList();
+            Log.d("test" , String.valueOf(myList[2]));
+            Intent intent1 =  new Intent(OrderPage.this, PaymentTest.class);
+            intent1.putExtra("name", ss);
+            intent1.putExtra("order" , myList);
+            OrderPage.this.startActivity(intent1);
+            });
     }
 
     private void pumpData() {
@@ -85,11 +82,11 @@ public class OrderPage extends AppCompatActivity {
                 Intent intent = getIntent();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     if (snapshot.child("userType").getValue().toString().equals("Owner")) {
-//                        Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
+
                         if(snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))){
-//                            Log.e("sadads", snapshot.child("Menu Items").toString());
+
                             for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()){
-//                                Log.e("log", ss.getValue().toString());
+
                                 String nameOrder =ss.child("name").getValue().toString();
                                 String rateOrder =ss.child("rate").getValue().toString();
                                 Order order = new Order(nameOrder ,rateOrder);

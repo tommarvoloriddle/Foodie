@@ -25,6 +25,8 @@ public class PaymentTest extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     public int sum =0 ,i =0;
     public  int[] myList = new int[20];
+    public DatabaseReference orderShop;
+    public String c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class PaymentTest extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         myList = extras.getIntArray("order");
-        b=  findViewById(R.id.totalAmount);
+        b = findViewById(R.id.totalAmount);
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,12 +63,82 @@ public class PaymentTest extends AppCompatActivity {
                 Object value = bundle.get(key);
                 Log.d("VAL", String.format("%s %s (%s)", key, value.toString(), value.getClass().getName()));
                 abc = value.toString();
+                //if(abc.equals("SUCCESS")){
+                    sendIntoDb();
+                //}
             }
         }
         else{
             //intent data is null for kitkat
             Toast.makeText(this,"Data is Null",Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void sendIntoDb() {
+        DatabaseReference userplacingorder = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
+        userplacingorder.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserProfile userProfile = dataSnapshot.getValue(UserProfile.class);
+                c = userProfile.getUserName().toString();
+
+
+            }
+
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PaymentTest.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        startActivity(new Intent(PaymentTest.this, main_screen.class));
+        Toast.makeText(PaymentTest.this, "Payment Successful and order placed", Toast.LENGTH_SHORT).show();
+
+        i=0;
+        DatabaseReference databaseReference = firebaseDatabase.getReferenceFromUrl("https://foodie-9167e.firebaseio.com/");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Intent intent = getIntent();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    if (snapshot.child("userType").getValue().toString().equals("Owner")) {
+//                        Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
+                        if (snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))) {
+
+                            Order currOrder = new Order();
+
+                            for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()){
+                                currOrder.setQuantity(String.valueOf(myList[i]));
+                                currOrder.setItemName(ss.child("name").getValue().toString());
+                                currOrder.setRate(c);
+
+                                i++;
+                                DatabaseReference ab = orderShop.child("Orders");
+
+                                if(currOrder.getQuantity().equals("0")){
+
+                                }else {
+                                    ab.push().setValue(currOrder);
+                                }
+                            }
+
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(PaymentTest.this, databaseError.getCode(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
     }
 
     @SuppressLint("RestrictedApi")
@@ -100,13 +172,15 @@ public class PaymentTest extends AppCompatActivity {
 //                        Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
                         if(snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))){
 //                            Log.e("sadads", snapshot.child("Menu Items").toString());
+                            orderShop = snapshot.getRef();
+
                             for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()){
 //                                Log.e("log", ss.getValue().toString());
                                 String nameOrder =ss.child("name").getValue().toString();
                                 String rateOrder =ss.child("rate").getValue().toString();
                                 sum = sum + Integer.valueOf(rateOrder)* (int)myList[i];
                                 i++;
-//                                Log.e("amoount" , String.valueOf(sum));
+//                                Log.e("amount" , String.valueOf(sum));
                             }
                         }
                     }

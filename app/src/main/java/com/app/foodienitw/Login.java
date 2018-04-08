@@ -49,11 +49,11 @@ public class Login extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if(user != null) {
-            finish();
-            startActivity(new Intent(Login.this, main_screen.class));
-        }
+//        FirebaseUser user = firebaseAuth.getCurrentUser();
+//        if(user != null) {
+//            finish();
+//            startActivity(new Intent(Login.this, main_screen.class));
+//        }
 
         registration.setOnClickListener(v -> startActivity(new Intent(Login.this, signup.class)));
 

@@ -22,11 +22,10 @@
         <activity
             android:name=".main_screen"
             android:theme="@style/generalnotitle" />
-
         <activity android:name=".Owner_MainPage" />
         <activity android:name=".OrderPage" />
-        <activity android:name=".PaymentTest"></activity>
-
+        <activity android:name=".PaymentTest" />
+        <activity android:name=".OrderPage_owner"></activity>
     </application>
 
 </manifest>
