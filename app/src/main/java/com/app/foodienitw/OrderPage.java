@@ -96,25 +96,27 @@ public class OrderPage extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Intent intent = getIntent();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if (snapshot.child("userType").getValue().toString().equals("Owner")) {
-                        Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
+                    if (snapshot.child("userType").getValue() != null) {
+                        if (snapshot.child("userType").getValue().toString().equals("Owner")) {
+                            Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
 
-                        if(snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))){
+                            if (snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))) {
 
 
-                            Log.e("sadads", snapshot.child("Menu Items").toString());
+                                Log.e("sadads", snapshot.child("Menu Items").toString());
 
-                            for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()){
-                                Log.e("log", ss.getValue().toString());
+                                for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()) {
+                                    Log.e("log", ss.getValue().toString());
 
-                                String nameOrder =ss.child("name").getValue().toString();
-                                String rateOrder =ss.child("rate").getValue().toString();
-                                Order order = new Order(nameOrder ,rateOrder);
-                                orderList.add(order);
-                                mAdapter.notifyDataSetChanged();
+                                    String nameOrder = ss.child("name").getValue().toString();
+                                    String rateOrder = ss.child("rate").getValue().toString();
+                                    Order order = new Order(nameOrder, rateOrder);
+                                    orderList.add(order);
+                                    mAdapter.notifyDataSetChanged();
+
+                                }
 
                             }
-
                         }
                     }
                 }

@@ -30,6 +30,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import static java.sql.Types.NULL;
+
 public class main_screen extends AppCompatActivity {
 
     private List<ShopDetails> shopsList = new ArrayList<>();
@@ -73,86 +75,88 @@ public class main_screen extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot :  dataSnapshot.getChildren()){
-                    if(snapshot.child("userType").getValue().toString().equals("Owner")){
-                        //Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
+                for(DataSnapshot snapshot :  dataSnapshot.getChildren()) {
+                    if (snapshot.child("userType").getValue() != null) {
+                        if (snapshot.child("userType").getValue().toString().equals("Owner")){
+                            //Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
 
-                        ShopDetails shop = new ShopDetails();
-                        shop.name = snapshot.child("Shop Details").child("name").getValue().toString();
-                        shop.location = snapshot.child("Shop Details").child("location").getValue().toString();
-                        shop.setPhoneno(snapshot.child("userNumber").getValue().toString());
-                        shop.openTime = snapshot.child("Shop Details").child("openTime").getValue().toString();
-                        shop.closeTime = snapshot.child("Shop Details").child("closeTime").getValue().toString();
+                            ShopDetails shop = new ShopDetails();
+                            shop.name = snapshot.child("Shop Details").child("name").getValue().toString();
+                            shop.location = snapshot.child("Shop Details").child("location").getValue().toString();
+                            shop.setPhoneno(snapshot.child("userNumber").getValue().toString());
+                            shop.openTime = snapshot.child("Shop Details").child("openTime").getValue().toString();
+                            shop.closeTime = snapshot.child("Shop Details").child("closeTime").getValue().toString();
 
-                        Date currentTime = Calendar.getInstance().getTime();
-                        String abcde = currentTime.toString();
+                            Date currentTime = Calendar.getInstance().getTime();
+                            String abcde = currentTime.toString();
 
-                        Integer ot,ct;
+                            Integer ot, ct;
 
-                        String oo = shop.openTime;
-                        if(oo.length()<4){
-                            oo = "0" + oo;
-                        }
-
-                        String co = shop.closeTime;
-                        if(co.length()<4){
-                            co = "0" + co;
-                        }
-
-                        Character ab = oo.charAt(2);
-                        Character cd = co.charAt(2);
-
-                        if(ab.toString().equals("P")){
-                            //ot = 12 + Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
-
-                            if(Character.getNumericValue(oo.charAt(0)) == 0){
-                                ot = 12+ Character.getNumericValue(oo.charAt(1));
-                            }else{
-                                ot = 12 + Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
+                            String oo = shop.openTime;
+                            if (oo.length() < 4) {
+                                oo = "0" + oo;
                             }
 
-                        }else{
-                            if(Character.getNumericValue(oo.charAt(0)) == 0){
-                                ot = Character.getNumericValue(oo.charAt(1));
-                            }else{
-                                ot = Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
-                            }
-                        }
-
-                        if(cd.toString().equals("P")){
-                            Log.e("qwerty","in pm");
-                            //ct = 12 + Character.getNumericValue(co.charAt(0) + co.charAt(1));
-
-                            if(Character.getNumericValue(co.charAt(0)) == 0){
-                                ct = 12 + Character.getNumericValue(co.charAt(1));
-                            }else{
-                                ct = 12 + Character.getNumericValue(co.charAt(0) + co.charAt(1));
+                            String co = shop.closeTime;
+                            if (co.length() < 4) {
+                                co = "0" + co;
                             }
 
-                        }else{
-                            if(Character.getNumericValue(co.charAt(0)) == 0){
-                                ct = Character.getNumericValue(co.charAt(1));
-                            }else{
-                                ct = Character.getNumericValue(co.charAt(0) + co.charAt(1));
-                            }
-                        }
+                            Character ab = oo.charAt(2);
+                            Character cd = co.charAt(2);
 
-                        if(ot<ct) {
-                            if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
-                                shop.setOpenorclose("Open");
+                            if (ab.toString().equals("P")) {
+                                //ot = 12 + Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
+
+                                if (Character.getNumericValue(oo.charAt(0)) == 0) {
+                                    ot = 12 + Character.getNumericValue(oo.charAt(1));
+                                } else {
+                                    ot = 12 + Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
+                                }
+
                             } else {
-                                shop.setOpenorclose("Close");
+                                if (Character.getNumericValue(oo.charAt(0)) == 0) {
+                                    ot = Character.getNumericValue(oo.charAt(1));
+                                } else {
+                                    ot = Character.getNumericValue(oo.charAt(0) + oo.charAt(1));
+                                }
                             }
-                        }else{
-                            if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
-                                shop.setOpenorclose("Close");
-                            } else {
-                                shop.setOpenorclose("Open");
-                            }
-                        }
 
-                        shopsList.add(shop);
-                        mAdapter.notifyDataSetChanged();
+                            if (cd.toString().equals("P")) {
+                                Log.e("qwerty", "in pm");
+                                //ct = 12 + Character.getNumericValue(co.charAt(0) + co.charAt(1));
+
+                                if (Character.getNumericValue(co.charAt(0)) == 0) {
+                                    ct = 12 + Character.getNumericValue(co.charAt(1));
+                                } else {
+                                    ct = 12 + Character.getNumericValue(co.charAt(0) + co.charAt(1));
+                                }
+
+                            } else {
+                                if (Character.getNumericValue(co.charAt(0)) == 0) {
+                                    ct = Character.getNumericValue(co.charAt(1));
+                                } else {
+                                    ct = Character.getNumericValue(co.charAt(0) + co.charAt(1));
+                                }
+                            }
+
+                            if (ot < ct) {
+                                if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
+                                    shop.setOpenorclose("Open");
+                                } else {
+                                    shop.setOpenorclose("Close");
+                                }
+                            } else {
+                                if (Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) >= ot && Character.getNumericValue(abcde.charAt(11) + abcde.charAt(12)) <= ct) {
+                                    shop.setOpenorclose("Close");
+                                } else {
+                                    shop.setOpenorclose("Open");
+                                }
+                            }
+
+                            shopsList.add(shop);
+                            mAdapter.notifyDataSetChanged();
+                        }
                     }
                 }
             }

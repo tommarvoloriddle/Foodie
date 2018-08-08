@@ -132,6 +132,7 @@ public class signup extends AppCompatActivity {
         DatabaseReference databaseReference = firebaseDatabase.getReference(firebaseAuth.getCurrentUser().getUid());
         UserProfile userProfile = new UserProfile(name1,email1,password1,phoneno1,owneroruser,shoptype);
         databaseReference.setValue(userProfile);
+
     }
 
 }

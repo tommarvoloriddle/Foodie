@@ -129,31 +129,34 @@ public class PaymentTest extends AppCompatActivity {
 
                 Intent intent = getIntent();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    if (snapshot.child("userType").getValue().toString().equals("Owner")) {
-                        Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
+                    if(snapshot.child("userType").getValue() != null) {
+                        if (snapshot.child("userType").getValue().toString().equals("Owner")) {
+                            Log.e("asjchb", snapshot.child("Shop Details").child("name").getValue().toString());
 
 
-                        if(snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))){
+                            if (snapshot.child("Shop Details").child("name").getValue().toString().equals(intent.getStringExtra("name"))) {
 
 
-                            Log.e("sadads", snapshot.child("Menu Items").toString());
+                                Log.e("sadads", snapshot.child("Menu Items").toString());
 
-                            for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()){
-                                Log.e("log", ss.getValue().toString());
+                                for (DataSnapshot ss : snapshot.child("Menu Items").getChildren()) {
+                                    Log.e("log", ss.getValue().toString());
 
-                                String nameOrder =ss.child("name").getValue().toString();
-                                String rateOrder =ss.child("rate").getValue().toString();
+                                    String nameOrder = ss.child("name").getValue().toString();
+                                    String rateOrder = ss.child("rate").getValue().toString();
 
-                                sum = sum + Integer.valueOf(rateOrder)* (int)myList[i];
-                                i++;
-                                Log.e("amoount" , String.valueOf(sum));
+                                    sum = sum + Integer.valueOf(rateOrder) * (int) myList[i];
+                                    i++;
+                                    Log.e("amoount", String.valueOf(sum));
+
+                                }
 
                             }
-
                         }
                     }
-                }
+
                 b.setText("Please pay " + String.valueOf(sum));
+                }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {

@@ -75,6 +75,7 @@ public class Login extends AppCompatActivity {
                     checkEmailVerification();
                     progressDialog.dismiss();
                 } else {
+
                     Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     progressDialog.dismiss();
                 }
